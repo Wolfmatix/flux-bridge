@@ -1,3 +1,3 @@
 # FLUX Bridge
 
-Bridge ETH on Base to SOL on Solana using Farcaster Frames.
+Bridge ETH on Base to SOL on Solana in Farcaster
