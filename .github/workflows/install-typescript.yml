@@ -1,0 +1,9 @@
+name: Install TypeScript
+on: [push]
+jobs:
+  install-typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install --save-dev typescript @types/react @types/node
+      - run: npm run build
