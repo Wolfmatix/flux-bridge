@@ -1,26 +1,37 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+// pages/_app.tsx
 
-// Wagmi and RainbowKit providers
-import { WagmiConfig, createConfig, configureChains } from 'wagmi'
-import { mainnet, polygon } from 'wagmi/chains'
-import { publicProvider } from 'wagmi/providers/public'
+import '../styles/globals.css';
+import '@rainbow-me/rainbowkit/styles.css';
 
-const { chains, publicClient } = configureChains(
-  [mainnet, polygon],
-  [publicProvider()]
-)
-const wagmiConfig = createConfig({
+import type { AppProps } from 'next/app';
+import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { base } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+import {
+  getDefaultWallets,
+  RainbowKitProvider
+} from '@rainbow-me/rainbowkit';
+
+const { chains, publicClient } = configureChains([base], [publicProvider()]);
+
+const { connectors } = getDefaultWallets({
+  appName: 'Flux Bridge',
+  projectId: 'YOUR_WALLETCONNECT_PROJECT_ID', // <- Replace this
+  chains,
+});
+
+const config = createConfig({
   autoConnect: true,
+  connectors,
   publicClient,
-})
+});
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <Component {...pageProps} />
+    <WagmiConfig config={config}>
+      <RainbowKitProvider chains={chains}>
+        <Component {...pageProps} />
+      </RainbowKitProvider>
     </WagmiConfig>
-  )
+  );
 }
-
-export default MyApp
