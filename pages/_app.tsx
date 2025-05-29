@@ -15,8 +15,8 @@ import {
 const { chains, publicClient } = configureChains([base], [publicProvider()]);
 
 const { connectors } = getDefaultWallets({
-  appName: 'Flux Bridge',
-  projectId: 'YOUR_WALLETCONNECT_PROJECT_ID', // <- Replace this
+  appName: 'FLUX', // <-- Changed app name here
+  projectId: 'a2c99b3b1f1d5595f400eabbca9db1d8',
   chains,
 });
 
