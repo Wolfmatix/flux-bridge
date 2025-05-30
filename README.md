@@ -1,4 +1,4 @@
-# Welcome to FLUX 
+#Welcome to FLUX 
 Flux will launch soon 
 when gas fee fund is complete 
 watch Farcaster and X
