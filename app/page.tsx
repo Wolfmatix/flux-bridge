@@ -21,7 +21,7 @@ export default function Home() {
 
   const handleBridge = () => {
     if (!ethAmount || !solEstimate) return alert('Enter amount first.');
-    alert(`Bridging ${ethAmount} ETH Socket SDK or contract
+    alert(`Bridging ${ethAmount} ETH to approx. ${solEstimate} SOL`);
   };
 
   return (
