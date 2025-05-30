@@ -1,3 +1,4 @@
+// app/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -20,14 +21,13 @@ export default function Home() {
 
   const handleBridge = () => {
     if (!ethAmount || !solEstimate) return alert('Enter amount first.');
-    alert(`Bridging ${ethAmount} ETH to approx. ${solEstimate} SOL`);
-    // Here you will call your bridging function via Socket SDK or contract
+    alert(`Bridging ${ethAmount} ETH Socket SDK or contract
   };
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-8">
       <Image
-        src="/flux-banner.png"
+        src="/file_000000006e7461f7968520cf14f5790a.png"
         alt="Flux"
         width={800}
         height={400}
