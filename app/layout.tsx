@@ -1,6 +1,5 @@
-// app/layout.tsx
 import './globals.css'
-import { WagmiConfig } from 'wagmi'
+miConfig } from 'wagmi'
 import { wagmiConfig } from '../lib/wagmi'
 
 export default function RootLayout({ children }) {
