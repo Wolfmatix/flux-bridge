@@ -1,13 +1,14 @@
 import './globals.css'
-import { WagmiProvider } from '../components/WagmiProvider'
+import { WagmiConfig } from 'wagmi'
+import { wagmiConfig } from '../lib/wagmi'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <WagmiProvider>
+        <WagmiConfig config={wagmiConfig}>
           {children}
-        </WagmiProvider>
+        </WagmiConfig>
       </body>
     </html>
   )
