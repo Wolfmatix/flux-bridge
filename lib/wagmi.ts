@@ -10,5 +10,8 @@ const { chains, publicClient } = configureChains(
 export const wagmiConfig = createConfig({
   autoConnect: true,
   publicClient,
-  chains,
+  // Remove 'chains' here!
 })
+
+// If you need chains elsewhere, export them:
+export { chains }
