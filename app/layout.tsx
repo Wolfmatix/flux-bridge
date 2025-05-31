@@ -1,5 +1,5 @@
 import './globals.css'
-miConfig } from 'wagmi'
+import { WagmiConfig } from 'wagmi'
 import { wagmiConfig } from '../lib/wagmi'
 
 export default function RootLayout({ children }) {
