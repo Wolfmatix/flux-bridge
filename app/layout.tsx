@@ -1,11 +1,16 @@
-import './globals.css';
+// app/layout.tsx
+import './globals.css'
+import { WagmiConfig } from 'wagmi'
+import { wagmiConfig } from '../lib/wagmi'
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-br from-[#141E30] to-[#243B55] min-h-screen">
-        {children}
+      <body>
+        <WagmiConfig config={wagmiConfig}>
+          {children}
+        </WagmiConfig>
       </body>
     </html>
-  );
+  )
 }
