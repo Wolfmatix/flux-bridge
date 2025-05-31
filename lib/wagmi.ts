@@ -1,4 +1,3 @@
-// lib/wagmi.ts
 import { createConfig, configureChains } from 'wagmi'
 import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
