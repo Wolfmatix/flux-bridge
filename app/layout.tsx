@@ -1,5 +1,4 @@
-// app/layout.tsx
-import './globals.css'; // Make sure this file exists for Tailwind/global styles
+import './globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
