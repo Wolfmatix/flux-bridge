@@ -9,17 +9,28 @@ export default function Home() {
   const { address, isConnected } = useAccount();
   const [ethAmount, setEthAmount] = useState('');
   const [solEstimate, setSolEstimate] = useState('');
+  const [error, setError] = useState('');
 
   const handleEstimate = () => {
+    setError('');
     const eth = parseFloat(ethAmount);
-    if (!isNaN(eth)) {
-      const sol = (eth * 70).toFixed(2); // mock rate
-      setSolEstimate(sol);
+    if (isNaN(eth) || eth <= 0) {
+      setError('Enter a valid, positive ETH amount.');
+      setSolEstimate('');
+      return;
     }
+    // In production, fetch the actual rate from an API
+    const sol = (eth * 70).toFixed(2); // mock rate
+    setSolEstimate(sol);
   };
 
-  const handleBridge = () => {
-    if (!ethAmount || !solEstimate) return alert('Enter amount first.');
+  const handleBridge = async () => {
+    setError('');
+    if (!ethAmount || !solEstimate) {
+      setError('Enter amount and estimate first.');
+      return;
+    }
+    // Placeholder for actual bridge logic
     alert(`Bridging ${ethAmount} ETH to approx. ${solEstimate} SOL`);
   };
 
@@ -54,6 +65,8 @@ export default function Home() {
               onChange={(e) => setEthAmount(e.target.value)}
               placeholder="0.05"
               className="w-full px-4 py-2 rounded-lg text-black mb-4"
+              min="0"
+              step="any"
             />
             <button
               onClick={handleEstimate}
@@ -61,7 +74,10 @@ export default function Home() {
             >
               Estimate SOL
             </button>
-            {solEstimate && (
+            {error && (
+              <div className="mb-4 text-red-400 text-md">{error}</div>
+            )}
+            {solEstimate && !error && (
               <p className="mb-4 text-green-400 text-lg">
                 You’ll receive ~{solEstimate} SOL
               </p>
